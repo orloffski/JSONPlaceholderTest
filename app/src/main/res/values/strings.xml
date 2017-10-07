@@ -12,7 +12,6 @@
     <string name="comment_body">Body</string>
     <string name="comment_email">E-mail</string>
     <string name="comment_postId">Post Id</string>
-    <string name="comment_id">Id</string>
     <string name="get_comment_btn_text">Get comment</string>
     <string name="comment_interval">1-500</string>
 </resources>

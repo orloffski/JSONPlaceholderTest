@@ -23,14 +23,12 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.post_title) TextView postTitle;
     @BindView(R.id.post_body) TextView postBody;
     @BindView(R.id.post_user_id) TextView postUserId;
-    @BindView(R.id.post_id) TextView postId;
     @BindView(R.id.post_id_input) EditText postIdInput;
 
     @BindView(R.id.comment_name) TextView commentName;
     @BindView(R.id.comment_body) TextView commentBody;
     @BindView(R.id.comment_email) TextView commentEmail;
     @BindView(R.id.comment_post_id) TextView commentPostId;
-    @BindView(R.id.comment_id) TextView commentId;
     @BindView(R.id.comment_id_input) EditText commentIdInput;
 
     @Override
@@ -73,7 +71,6 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
                 postTitle.setText(response.body().getTitle());
                 postBody.setText(response.body().getBody());
                 postUserId.setText(String.valueOf(response.body().getUserId()));
-                postId.setText(String.valueOf(response.body().getId()));
             }
 
             @Override
@@ -95,7 +92,6 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
                 commentBody.setText(response.body().getBody());
                 commentEmail.setText(response.body().getEmail());
                 commentPostId.setText(String.valueOf(response.body().getPostId()));
-                commentId.setText(String.valueOf(response.body().getId()));
             }
 
             @Override
