@@ -1,6 +1,7 @@
 package by.development.madcat.jsonplaceholdertest;
 
 import by.development.madcat.jsonplaceholdertest.models.Comment;
+import by.development.madcat.jsonplaceholdertest.models.Photo;
 import by.development.madcat.jsonplaceholdertest.models.Post;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,4 +14,7 @@ public interface JsonPlaceholderApi {
 
     @GET("/comments/{id}")
     Call<Comment> getCommentById(@Path("id") String id);
+
+    @GET("/photos/{id}")
+    Call<Photo> getPhotoById(@Path("id") String id);
 }

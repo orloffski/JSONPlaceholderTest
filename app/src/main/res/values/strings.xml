@@ -14,4 +14,9 @@
     <string name="comment_postId">Post Id</string>
     <string name="get_comment_btn_text">Get comment</string>
     <string name="comment_interval">1-500</string>
+
+    <string name="photo_title">Title</string>
+    <string name="photo_album_id">Album Id</string>
+    <string name="get_photo_btn_text">Get photo</string>
+    <string name="photo_interval">1-5000</string>
 </resources>

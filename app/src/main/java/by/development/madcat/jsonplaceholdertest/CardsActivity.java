@@ -5,12 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import by.development.madcat.jsonplaceholdertest.models.Comment;
+import by.development.madcat.jsonplaceholdertest.models.Photo;
 import by.development.madcat.jsonplaceholdertest.models.Post;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +35,11 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.comment_post_id) TextView commentPostId;
     @BindView(R.id.comment_id_input) EditText commentIdInput;
 
+    @BindView(R.id.photo_image) ImageView photoImage;
+    @BindView(R.id.photo_title) TextView photoTitle;
+    @BindView(R.id.photo_album_id) TextView photoAlbumId;
+    @BindView(R.id.photo_id_input) EditText photoIdInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +50,15 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
         init();
     }
 
-    private void init(){
+    private void init() {
         postIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 100)});
         commentIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 500)});
+        photoIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 5000)});
 
         jsonPlaceholderApi = JsonPlaceholderApiController.getApi();
     }
 
-    @OnClick({R.id.get_post_button, R.id.get_comment_button})
+    @OnClick({R.id.get_post_button, R.id.get_comment_button, R.id.get_photo_button})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.get_post_button:
@@ -56,6 +66,9 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.get_comment_button:
                 loadComment();
+                break;
+            case R.id.get_photo_button:
+                loadPhoto();
                 break;
         }
     }
@@ -80,8 +93,8 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private void loadComment(){
-        if(commentIdInput.getText().toString().length() == 0)
+    private void loadComment() {
+        if (commentIdInput.getText().toString().length() == 0)
             return;
 
         Integer number = Integer.parseInt(commentIdInput.getText().toString());
@@ -96,6 +109,26 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(Call<Comment> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void loadPhoto(){
+        if(photoIdInput.getText().toString().length() == 0)
+            return;
+
+        Integer number = Integer.parseInt(photoIdInput.getText().toString());
+        jsonPlaceholderApi.getPhotoById(String.valueOf(number)).enqueue(new Callback<Photo>() {
+            @Override
+            public void onResponse(Call<Photo> call, Response<Photo> response) {
+                Picasso.with(getApplicationContext()).load(response.body().getUrl()).into(photoImage);
+                photoTitle.setText(response.body().getTitle());
+                photoAlbumId.setText(String.valueOf(response.body().getAlbumId()));
+            }
+
+            @Override
+            public void onFailure(Call<Photo> call, Throwable t) {
 
             }
         });
