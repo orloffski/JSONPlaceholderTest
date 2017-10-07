@@ -3,6 +3,7 @@ package by.development.madcat.jsonplaceholdertest;
 import by.development.madcat.jsonplaceholdertest.models.Comment;
 import by.development.madcat.jsonplaceholdertest.models.Photo;
 import by.development.madcat.jsonplaceholdertest.models.Post;
+import by.development.madcat.jsonplaceholdertest.models.Todo;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -17,4 +18,7 @@ public interface JsonPlaceholderApi {
 
     @GET("/photos/{id}")
     Call<Photo> getPhotoById(@Path("id") String id);
+
+    @GET("/todos/{id}")
+    Call<Todo> getTodoById(@Path("id") String id);
 }

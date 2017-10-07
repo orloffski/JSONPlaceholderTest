@@ -19,4 +19,12 @@
     <string name="photo_album_id">Album Id</string>
     <string name="get_photo_btn_text">Get photo</string>
     <string name="photo_interval">1-5000</string>
+
+    <string name="todo_title">Title</string>
+    <string name="todo_user_id">User Id</string>
+    <string name="todo_completed">Completed</string>
+    <string name="todo_interval">1-200</string>
+    <string name="get_todo_btn_text">Get todo</string>
+    <string name="todo_completed_text">completed</string>
+    <string name="todo_not_completed_text">not completed</string>
 </resources>
