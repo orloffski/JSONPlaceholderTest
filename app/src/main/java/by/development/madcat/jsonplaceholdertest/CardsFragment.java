@@ -1,9 +1,13 @@
 package by.development.madcat.jsonplaceholdertest;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.InputFilter;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CardsActivity extends AppCompatActivity implements View.OnClickListener {
+public class CardsFragment extends Fragment implements View.OnClickListener{
 
     private static JsonPlaceholderApi jsonPlaceholderApi;
 
@@ -48,17 +52,20 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.todo_completed) TextView todoCompleted;
     @BindView(R.id.todo_id_input) EditText todoIdInput;
 
+    public CardsFragment() {}
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cards);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_cards, container, false);
 
-        ButterKnife.bind(this);
+        ButterKnife.bind(this, view);
 
         init();
 
         loadTodo(true);
+
+        return view;
     }
 
     private void init() {
@@ -137,7 +144,7 @@ public class CardsActivity extends AppCompatActivity implements View.OnClickList
         jsonPlaceholderApi.getPhotoById(String.valueOf(number)).enqueue(new Callback<Photo>() {
             @Override
             public void onResponse(Call<Photo> call, Response<Photo> response) {
-                Picasso.with(getApplicationContext()).load(response.body().getUrl()).into(photoImage);
+                Picasso.with(getContext()).load(response.body().getUrl()).into(photoImage);
                 photoTitle.setText(response.body().getTitle());
                 photoAlbumId.setText(String.valueOf(response.body().getAlbumId()));
             }
