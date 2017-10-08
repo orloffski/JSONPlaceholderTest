@@ -33,4 +33,7 @@ public interface JsonPlaceholderApi {
             @Query("id") String id3,
             @Query("id") String id4,
             @Query("id") String id5);
+
+    @GET("/users/{id}")
+    Call<User> getUserById(@Path("id") String id);
 }

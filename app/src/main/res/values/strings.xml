@@ -33,6 +33,17 @@
 
     <string name="users_ids">1, 2, 3, 4, 5</string>
 
+    <string name="user_username">Username</string>
+    <string name="user_name">Name</string>
+    <string name="user_email">Email</string>
+    <string name="user_phone">Phone</string>
+    <string name="user_website">Website</string>
+    <string name="user_zipcode">Zipcode</string>
+    <string name="user_city">City</string>
+    <string name="user_street">Street</string>
+    <string name="get_user_btn_text">Get user</string>
+    <string name="user_interval">1-10</string>
+
     <string name="developer_name">Орловский Евгений</string>
     <string name="specialization">Android developer</string>
     <string name="contact_phone">+375 29 544 97 57</string>

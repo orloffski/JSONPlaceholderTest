@@ -3,7 +3,6 @@ package by.development.madcat.jsonplaceholdertest;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CardsFragment extends Fragment implements View.OnClickListener{
+public class CardsFragment extends Fragment implements View.OnClickListener {
 
     private static JsonPlaceholderApi jsonPlaceholderApi;
 
@@ -59,9 +58,20 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
 
     @BindViews({R.id.user1, R.id.user2, R.id.user3, R.id.user4, R.id.user5}) List<View> usersViewList;
 
+    @BindView(R.id.user_username) TextView userUsername;
+    @BindView(R.id.user_name) TextView userName;
+    @BindView(R.id.user_email) TextView userEmail;
+    @BindView(R.id.user_phone) TextView userPhone;
+    @BindView(R.id.user_website) TextView userWebsite;
+    @BindView(R.id.user_zipcode) TextView userZipcode;
+    @BindView(R.id.user_city) TextView userCity;
+    @BindView(R.id.user_street) TextView userStreet;
+    @BindView(R.id.user_id_input) EditText userIdInput;
+
     Unbinder unbinder;
 
-    public CardsFragment() {}
+    public CardsFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,11 +93,12 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
         commentIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 500)});
         photoIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 5000)});
         todoIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 200)});
+        userIdInput.setFilters(new InputFilter[]{new InputFilterMinMax(1, 10)});
 
         jsonPlaceholderApi = JsonPlaceholderApiController.getApi();
     }
 
-    @OnClick({R.id.get_post_button, R.id.get_comment_button, R.id.get_photo_button, R.id.get_todo_button})
+    @OnClick({R.id.get_post_button, R.id.get_comment_button, R.id.get_photo_button, R.id.get_todo_button, R.id.get_user_button})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.get_post_button:
@@ -101,6 +112,9 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.get_todo_button:
                 loadTodo(false);
+                break;
+            case R.id.get_user_button:
+                loadUser(false);
                 break;
         }
     }
@@ -166,13 +180,13 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
         });
     }
 
-    private void loadTodo(final boolean random){
+    private void loadTodo(final boolean random) {
         if (todoIdInput.getText().toString().length() == 0 && !random)
             return;
 
         Integer number;
 
-        if(!random)
+        if (!random)
             number = Integer.parseInt(todoIdInput.getText().toString());
         else
             number = new Random().nextInt(200) + 1;
@@ -182,7 +196,7 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
             public void onResponse(Call<Todo> call, Response<Todo> response) {
                 todoTitle.setText(response.body().getTitle());
                 todoUserId.setText(String.valueOf(response.body().getUserId()));
-                if(isAdded())
+                if (isAdded())
                     todoCompleted.setText(
                             response.body().getCompleted()
                                     ?
@@ -191,7 +205,7 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
                                     getActivity().getResources().getString(R.string.todo_not_completed_text)
                     );
 
-                if(random)
+                if (random)
                     todoIdInput.setText(String.valueOf(response.body().getId()));
             }
 
@@ -202,14 +216,14 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
         });
     }
 
-    private void loadUser(boolean topUsers){
-        if(topUsers){
-            jsonPlaceholderApi.getUsersByIds("1","2","3","4","5").enqueue(new Callback<List<User>>() {
+    private void loadUser(boolean topUsers) {
+        if (topUsers) {
+            jsonPlaceholderApi.getUsersByIds("1", "2", "3", "4", "5").enqueue(new Callback<List<User>>() {
                 @Override
                 public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                     int counter = 0;
-                    for(User user : response.body()){
-                        TextView view = (TextView)usersViewList.get(counter);
+                    for (User user : response.body()) {
+                        TextView view = (TextView) usersViewList.get(counter);
                         view.setText(user.getName() + ", " + user.getUsername() + ", " + user.getEmail());
                         counter++;
                     }
@@ -217,6 +231,26 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
 
                 @Override
                 public void onFailure(Call<List<User>> call, Throwable t) {
+
+                }
+            });
+        }else{
+            Integer number = Integer.parseInt(userIdInput.getText().toString());
+            jsonPlaceholderApi.getUserById(String.valueOf(number)).enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    userUsername.setText(response.body().getUsername());
+                    userName.setText(response.body().getName());
+                    userEmail.setText(response.body().getEmail());
+                    userPhone.setText(response.body().getPhone());
+                    userWebsite.setText(response.body().getWebsite());
+                    userZipcode.setText(response.body().getAddress().getZipcode());
+                    userCity.setText(response.body().getAddress().getCity());
+                    userStreet.setText(response.body().getAddress().getStreet());
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
 
                 }
             });
