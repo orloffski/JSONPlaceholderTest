@@ -39,6 +39,8 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
                 intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",getString(R.string.contact_email),null));
                 break;
             case R.id.skype_fab:
+                intent = new Intent("android.intent.action.VIEW");
+                intent.setData(Uri.parse("skype:" + getString(R.string.contact_skype)));
                 break;
         }
 
