@@ -3,6 +3,7 @@ package by.development.madcat.jsonplaceholdertest;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,11 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -24,6 +27,7 @@ import by.development.madcat.jsonplaceholdertest.models.Comment;
 import by.development.madcat.jsonplaceholdertest.models.Photo;
 import by.development.madcat.jsonplaceholdertest.models.Post;
 import by.development.madcat.jsonplaceholdertest.models.Todo;
+import by.development.madcat.jsonplaceholdertest.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +57,8 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.todo_completed) TextView todoCompleted;
     @BindView(R.id.todo_id_input) EditText todoIdInput;
 
+    @BindViews({R.id.user1, R.id.user2, R.id.user3, R.id.user4, R.id.user5}) List<View> usersViewList;
+
     Unbinder unbinder;
 
     public CardsFragment() {}
@@ -67,6 +73,7 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
         init();
 
         loadTodo(true);
+        loadUser(true);
 
         return view;
     }
@@ -193,6 +200,27 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
 
             }
         });
+    }
+
+    private void loadUser(boolean topUsers){
+        if(topUsers){
+            jsonPlaceholderApi.getUsersByIds("1","2","3","4","5").enqueue(new Callback<List<User>>() {
+                @Override
+                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                    int counter = 0;
+                    for(User user : response.body()){
+                        TextView view = (TextView)usersViewList.get(counter);
+                        view.setText(user.getName() + ", " + user.getUsername() + ", " + user.getEmail());
+                        counter++;
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<User>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 
     @Override
