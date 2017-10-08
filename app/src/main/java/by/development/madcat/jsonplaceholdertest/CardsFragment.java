@@ -172,13 +172,14 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
             public void onResponse(Call<Todo> call, Response<Todo> response) {
                 todoTitle.setText(response.body().getTitle());
                 todoUserId.setText(String.valueOf(response.body().getUserId()));
-                todoCompleted.setText(
-                        response.body().getCompleted()
-                                ?
-                                getString(R.string.todo_completed_text)
-                                :
-                                getString(R.string.todo_not_completed_text)
-                );
+                if(isAdded())
+                    todoCompleted.setText(
+                            response.body().getCompleted()
+                                    ?
+                                    getActivity().getResources().getString(R.string.todo_completed_text)
+                                    :
+                                    getActivity().getResources().getString(R.string.todo_not_completed_text)
+                    );
 
                 if(random)
                     todoIdInput.setText(String.valueOf(response.body().getId()));
