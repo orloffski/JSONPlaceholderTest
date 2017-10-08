@@ -10,4 +10,8 @@
     <color name="colorDivider">#454c70</color>
     <color name="colorBorder">#a7a4a4</color>
     <color name="colorExtra">#fffac1</color>
+
+    <color name="yellow">#fce802</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#ff7700</color>
 </resources>

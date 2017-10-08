@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyCardViewStyle" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/yellow</item>
+    </style>
+
+    <style name="MyButtonStyle">
+        <item name="colorControlHighlight">@color/red</item>
+        <item name="colorButtonNormal">@color/orange</item>
+    </style>
+
 </resources>
