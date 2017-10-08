@@ -6,136 +6,137 @@
     xmlns:diagonal="http://schemas.android.com/apk/res-auto"
     tools:context="by.development.madcat.jsonplaceholdertest.ContactsFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:src="@drawable/index"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="24dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:elevation="8dp"
-            android:layout_marginStart="52dp" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="24dp"
-            android:elevation="8dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center_horizontal"
-            android:text="@string/developer_name"
-            android:textSize="24sp"
-            diagonal:layout_constraintLeft_toRightOf="@+id/profile_image"
-            diagonal:layout_constraintRight_toRightOf="parent"
-            diagonal:layout_constraintTop_toTopOf="parent" />
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="24dp"
+                android:elevation="8dp"
+                android:src="@drawable/index"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:elevation="8dp"
-            android:gravity="center_horizontal"
-            android:text="@string/specialization"
-            android:textSize="18sp"
-            diagonal:layout_constraintLeft_toRightOf="@+id/profile_image"
-            diagonal:layout_constraintRight_toRightOf="parent"
-            diagonal:layout_constraintTop_toBottomOf="@+id/textView" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="24dp"
+                android:elevation="8dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:text="@string/developer_name"
+                android:textSize="24sp"
+                diagonal:layout_constraintLeft_toRightOf="@+id/profile_image"
+                diagonal:layout_constraintRight_toRightOf="parent"
+                diagonal:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.FloatingActionButton
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/phone_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="32dp"
-            app:backgroundTint="@color/colorBlack"
-            android:clickable="true"
-            diagonal:fabSize="mini"
-            diagonal:layout_constraintTop_toBottomOf="@+id/profile_image"
-            diagonal:srcCompat="@drawable/ic_mobile"
-            diagonal:layout_constraintLeft_toLeftOf="parent" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:elevation="8dp"
+                android:gravity="center_horizontal"
+                android:text="@string/specialization"
+                android:textSize="18sp"
+                diagonal:layout_constraintLeft_toRightOf="@+id/profile_image"
+                diagonal:layout_constraintRight_toRightOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="42dp"
-            android:text="@string/contact_phone"
-            android:textSize="18sp"
-            diagonal:layout_constraintLeft_toRightOf="@+id/phone_fab"
-            diagonal:layout_constraintRight_toRightOf="parent"
-            diagonal:layout_constraintTop_toBottomOf="@+id/profile_image" />
+            <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/phone_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorBlack"
+                diagonal:fabSize="mini"
+                diagonal:layout_constraintLeft_toLeftOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/profile_image"
+                diagonal:srcCompat="@drawable/ic_mobile" />
 
-        <android.support.design.widget.FloatingActionButton
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/email_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/colorBlack"
-            android:clickable="true"
-            diagonal:fabSize="mini"
-            diagonal:srcCompat="@drawable/ic_email"
-            android:layout_marginTop="24dp"
-            diagonal:layout_constraintTop_toBottomOf="@+id/phone_fab"
-            android:layout_marginLeft="32dp"
-            diagonal:layout_constraintLeft_toLeftOf="parent" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="42dp"
+                android:text="@string/contact_phone"
+                android:textSize="18sp"
+                diagonal:layout_constraintLeft_toRightOf="@+id/phone_fab"
+                diagonal:layout_constraintRight_toRightOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="34dp"
-            android:text="@string/contact_email"
-            android:textSize="18sp"
-            diagonal:layout_constraintLeft_toRightOf="@+id/email_fab"
-            diagonal:layout_constraintRight_toRightOf="parent"
-            diagonal:layout_constraintTop_toBottomOf="@+id/phone_fab" />
+            <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/email_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorBlack"
+                diagonal:fabSize="mini"
+                diagonal:layout_constraintLeft_toLeftOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/phone_fab"
+                diagonal:srcCompat="@drawable/ic_email" />
 
-        <android.support.design.widget.FloatingActionButton
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/skype_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/colorBlack"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="24dp"
-            android:clickable="true"
-            diagonal:fabSize="mini"
-            diagonal:layout_constraintTop_toBottomOf="@+id/email_fab"
-            diagonal:srcCompat="@drawable/ic_skype"
-            diagonal:layout_constraintLeft_toLeftOf="parent" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="34dp"
+                android:text="@string/contact_email"
+                android:textSize="18sp"
+                diagonal:layout_constraintLeft_toRightOf="@+id/email_fab"
+                diagonal:layout_constraintRight_toRightOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/phone_fab" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="34dp"
-            android:text="@string/contact_skype"
-            android:textSize="18sp"
-            diagonal:layout_constraintLeft_toRightOf="@+id/skype_fab"
-            diagonal:layout_constraintRight_toRightOf="parent"
-            diagonal:layout_constraintTop_toBottomOf="@+id/email_fab" />
+            <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/skype_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorBlack"
+                diagonal:fabSize="mini"
+                diagonal:layout_constraintLeft_toLeftOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/email_fab"
+                diagonal:srcCompat="@drawable/ic_skype" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="34dp"
+                android:text="@string/contact_skype"
+                android:textSize="18sp"
+                diagonal:layout_constraintLeft_toRightOf="@+id/skype_fab"
+                diagonal:layout_constraintRight_toRightOf="parent"
+                diagonal:layout_constraintTop_toBottomOf="@+id/email_fab" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </RelativeLayout>
