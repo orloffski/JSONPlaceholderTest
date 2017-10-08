@@ -64,7 +64,7 @@
             android:layout_marginStart="8dp" />
 
         <FrameLayout
-            android:layout_width="368dp"
+            android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/colorBlack"
             android:id="@+id/frameLayout"
