@@ -11,6 +11,19 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Post Card"
+            android:textSize="24sp"
+            card_view:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            card_view:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            card_view:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
             android:id="@+id/post_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -22,9 +35,9 @@
             android:textSize="24sp"
             card_view:layout_constraintLeft_toLeftOf="parent"
             card_view:layout_constraintRight_toRightOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            card_view:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
         <TextView
