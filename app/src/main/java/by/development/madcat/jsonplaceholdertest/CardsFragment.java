@@ -17,6 +17,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import by.development.madcat.jsonplaceholdertest.models.Comment;
 import by.development.madcat.jsonplaceholdertest.models.Photo;
 import by.development.madcat.jsonplaceholdertest.models.Post;
@@ -50,6 +51,8 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.todo_completed) TextView todoCompleted;
     @BindView(R.id.todo_id_input) EditText todoIdInput;
 
+    Unbinder unbinder;
+
     public CardsFragment() {}
 
     @Override
@@ -57,7 +60,7 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cards, container, false);
 
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         init();
 
@@ -188,5 +191,11 @@ public class CardsFragment extends Fragment implements View.OnClickListener{
 
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }
