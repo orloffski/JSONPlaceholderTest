@@ -56,12 +56,13 @@
             diagonal:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <android.support.design.widget.FloatingActionButton
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/phone_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="@color/colorBlack"
+            app:backgroundTint="@color/colorBlack"
             android:clickable="true"
             diagonal:fabSize="mini"
             diagonal:layout_constraintTop_toBottomOf="@+id/profile_image"
@@ -82,10 +83,11 @@
             diagonal:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
         <android.support.design.widget.FloatingActionButton
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/email_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorBlack"
+            app:backgroundTint="@color/colorBlack"
             android:clickable="true"
             diagonal:fabSize="mini"
             diagonal:srcCompat="@drawable/ic_email"
@@ -108,10 +110,11 @@
             diagonal:layout_constraintTop_toBottomOf="@+id/phone_fab" />
 
         <android.support.design.widget.FloatingActionButton
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/skype_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorBlack"
+            app:backgroundTint="@color/colorBlack"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="24dp"
             android:clickable="true"
