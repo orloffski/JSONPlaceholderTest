@@ -33,9 +33,10 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
 
         switch (view.getId()) {
             case R.id.phone_fab:
-                intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel","+375295449757",null));
+                intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",getString(R.string.contact_phone),null));
                 break;
             case R.id.email_fab:
+                intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",getString(R.string.contact_email),null));
                 break;
             case R.id.skype_fab:
                 break;
