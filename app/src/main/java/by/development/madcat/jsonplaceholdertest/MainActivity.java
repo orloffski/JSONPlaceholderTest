@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity{
         bottomNavigation.inflateMenu(R.menu.bottom_menu);
         fragmentManager = getSupportFragmentManager();
 
-        fragmentManager.beginTransaction().replace(R.id.main_container, new CardsFragment()).commit();
+        fragment = fragmentManager.findFragmentByTag(TAG);
+
+        if(fragment == null)
+            fragmentManager.beginTransaction().replace(R.id.main_container, new CardsFragment(), TAG).commit();
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -40,10 +43,9 @@ public class MainActivity extends AppCompatActivity{
                         break;
                 }
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.main_container, fragment).commit();
+                transaction.replace(R.id.main_container, fragment, TAG).commit();
                 return true;
             }
         });
     }
-
 }
