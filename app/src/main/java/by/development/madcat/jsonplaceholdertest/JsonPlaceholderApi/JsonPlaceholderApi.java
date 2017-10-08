@@ -1,4 +1,4 @@
-package by.development.madcat.jsonplaceholdertest;
+package by.development.madcat.jsonplaceholdertest.JsonPlaceholderApi;
 
 import by.development.madcat.jsonplaceholdertest.models.Comment;
 import by.development.madcat.jsonplaceholdertest.models.Photo;

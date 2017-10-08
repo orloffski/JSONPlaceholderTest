@@ -18,6 +18,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import by.development.madcat.jsonplaceholdertest.JsonPlaceholderApi.JsonPlaceholderApi;
+import by.development.madcat.jsonplaceholdertest.JsonPlaceholderApi.JsonPlaceholderApiController;
 import by.development.madcat.jsonplaceholdertest.models.Comment;
 import by.development.madcat.jsonplaceholdertest.models.Photo;
 import by.development.madcat.jsonplaceholdertest.models.Post;

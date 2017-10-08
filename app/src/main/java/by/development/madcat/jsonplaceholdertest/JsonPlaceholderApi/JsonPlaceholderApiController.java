@@ -1,4 +1,4 @@
-package by.development.madcat.jsonplaceholdertest;
+package by.development.madcat.jsonplaceholdertest.JsonPlaceholderApi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
